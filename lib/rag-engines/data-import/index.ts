@@ -77,7 +77,7 @@ export class DataImport extends Construct {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
-      transferAcceleration: true,
+      transferAcceleration: false,
       enforceSSL: true,
       serverAccessLogsBucket: uploadLogsBucket,
       cors: [

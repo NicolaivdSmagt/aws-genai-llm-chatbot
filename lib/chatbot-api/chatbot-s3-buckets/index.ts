@@ -21,7 +21,7 @@ export class ChatBotS3Buckets extends Construct {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
-      transferAcceleration: true,
+      transferAcceleration: false,
       enforceSSL: true,
       serverAccessLogsBucket: logsBucket,
       cors: [

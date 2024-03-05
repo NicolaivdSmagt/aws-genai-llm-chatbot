@@ -1,5 +1,6 @@
-import boto3
+import os, boto3
 from typing import Optional, List
+import genai_core.parameters
 
 def get_bedrock_region():
     config = genai_core.parameters.get_config()
@@ -11,7 +12,9 @@ def get_bedrock_region():
     if region_name:
         return region_name
 
-comprehend = boto3.client("comprehend", region=get_bedrock_region())
+region_name = get_bedrock_region() or os.environ["AWS_REGION"] 
+
+comprehend = boto3.client("comprehend", region_name = region_name)
 
 aws_to_pg = {
     # Afrikaans closely related to Dutch. Might not be accurate. Better than nothing.

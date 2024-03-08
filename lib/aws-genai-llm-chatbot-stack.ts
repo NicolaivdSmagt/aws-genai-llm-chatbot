@@ -12,6 +12,7 @@ import { IdeficsInterface } from "./model-interfaces/idefics";
 import * as subscriptions from "aws-cdk-lib/aws-sns-subscriptions";
 import * as sns from "aws-cdk-lib/aws-sns";
 import { NagSuppressions } from "cdk-nag";
+import { Tags } from "aws-cdk-lib";
 
 export interface AwsGenAILLMChatbotStackProps extends cdk.StackProps {
   readonly config: SystemConfig;
@@ -27,6 +28,7 @@ export class AwsGenAILLMChatbotStack extends cdk.Stack {
       description: "AWS LLM CHATBOT (uksb-1tupboc16)",
       ...props,
     });
+    Tags.of(this).add("project", "generative-ai-poc");
 
     const shared = new Shared(this, "Shared", { config: props.config });
     const authentication = new Authentication(this, "Authentication");

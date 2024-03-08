@@ -47,6 +47,8 @@ export class Shared extends Construct {
     let vpc: ec2.Vpc;
     if (!props.config.vpc?.vpcId) {
       vpc = new ec2.Vpc(this, "VPC", {
+        cidr: "10.100.0.0/20",
+        createInternetGateway: false,
         natGateways: 1,
         restrictDefaultSecurityGroup: false,
         subnetConfiguration: [

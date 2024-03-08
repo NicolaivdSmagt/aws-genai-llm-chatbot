@@ -223,6 +223,7 @@ export class WebsiteCrawlingWorkflow extends Construct {
 
     const logGroup = new logs.LogGroup(this, "WebsiteCrawlingSMLogGroup", {
       removalPolicy: RemovalPolicy.DESTROY,
+      logGroupName: "/aws/vendedlogs/states/WebsiteCrawlingSMLogGroup",
     });
 
     const stateMachine = new sfn.StateMachine(this, "WebsiteCrawling", {

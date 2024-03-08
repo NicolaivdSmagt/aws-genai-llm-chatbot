@@ -161,6 +161,7 @@ export class DeleteWorkspace extends Construct {
 
     const logGroup = new logs.LogGroup(this, "DeleteWorkspaceSMLogGroup", {
       removalPolicy: RemovalPolicy.DESTROY,
+      logGroupName: "/aws/vendedlogs/states/DeleteWorkspaceSMLogGroup",
     });
 
     const stateMachine = new sfn.StateMachine(this, "DeleteWorkspace", {

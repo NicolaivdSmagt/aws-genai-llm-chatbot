@@ -108,6 +108,7 @@ export class FileImportWorkflow extends Construct {
 
     const logGroup = new logs.LogGroup(this, "FileImportSMLogGroup", {
       removalPolicy: RemovalPolicy.DESTROY,
+      logGroupName: "/aws/vendedlogs/states/FileImportSMLogGroup",
     });
 
     const workflow = setProcessing.next(fileImportJob).next(setProcessed);

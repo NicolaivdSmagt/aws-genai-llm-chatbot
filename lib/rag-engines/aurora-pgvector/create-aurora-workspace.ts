@@ -128,6 +128,7 @@ export class CreateAuroraWorkspace extends Construct {
       "CreateAuroraWorkspaceSMLogGroup",
       {
         removalPolicy: RemovalPolicy.DESTROY,
+	logGroupName: "/aws/vendedlogs/states/CreateAuroraWorkspaceSMLogGroup",
       }
     );
 

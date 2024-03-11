@@ -38,19 +38,12 @@ export class IdeficsInterface extends Construct {
     // Create a private API to serve images and other files from S3
     // in order to avoid using signed URLs and run out of input tokens
     // with the idefics model
-    const vpcDefaultSecurityGroup = ec2.SecurityGroup.fromSecurityGroupId(
-      this,
-      "VPCDefaultSecurityGroup",
-      props.shared.vpc.vpcDefaultSecurityGroup
-    );
-
     const vpcEndpoint = props.shared.vpc.addInterfaceEndpoint(
       "PrivateApiEndpoint",
       {
         service: ec2.InterfaceVpcEndpointAwsService.APIGATEWAY,
         privateDnsEnabled: true,
         open: true,
-        securityGroups: [vpcDefaultSecurityGroup],
       }
     );
 

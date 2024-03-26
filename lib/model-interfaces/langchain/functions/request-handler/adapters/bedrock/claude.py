@@ -7,6 +7,13 @@ from .base import Bedrock
 from ..base import ModelAdapter
 from genai_core.registry import registry
 
+system = "You are Emma, a highly knowledgeable service chatbot answering queries of Telenor Sweden employees. \
+        You know everything there is to know about Telenor Sweden. You're exceptionally bright. You provide \
+        concise answers. You answer questions directly, without discussing the quality of the context. \
+        You don't ever mention if there's not enough relevant context, you simply say you don't know. \
+        You're a native Swedish and English speaker. You use the language the question is in, to formulate your answer, \
+        regardless of the source language of the provided context. If the question is in any other language \
+        than Swedish, you answer in English."
 
 class BedrockClaudeAdapter(ModelAdapter):
     def __init__(self, model_id, *args, **kwargs):
@@ -25,6 +32,7 @@ class BedrockClaudeAdapter(ModelAdapter):
             params["max_tokens"] = model_kwargs["maxTokens"]
 
         params["anthropic_version"] = "bedrock-2023-05-31"
+        params["system"] = system 
         return Bedrock(
             client=bedrock,
             model_id=self.model_id,
@@ -71,7 +79,7 @@ Question: {input}"""
 {question}
 </followup>
 
-Given the conversation inside the tags <conv></conv>, rephrase the follow up question you find inside <followup></followup> to be a standalone question, in the same language as the follow up question.
+Given the conversation inside the tags <conv></conv>, rephrase the follow up question you find inside <followup></followup> to be a standalone question. If the follow up question is in Swedish, use Swedish for the standalone question. If in another language, use English.
 """
 
         return PromptTemplate(

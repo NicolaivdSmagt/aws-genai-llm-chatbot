@@ -100,6 +100,18 @@ export class UserInterface extends Construct {
           props.config
         ),
         privateWebsite: props.config.privateWebsite ? true : false,
+        auth_federated_provider: {
+          auto_redirect: true,
+          custom: true,
+          name: "idp.vandersmagt.nl"
+        }
+      },
+      oauth: {
+        domain: "test-chatbot.auth.eu-north-1.amazoncognito.com",
+        scope: ["openid", "profile", "email", "aws.cognito.signin.user.admin"],
+        redirectSignIn: `https://djyewq84h009g.cloudfront.net/`,
+        redirectSignOut: `https:///djyewq84h009g.cloudfront.net/`,
+        responseType: "code",
       },
     });
 

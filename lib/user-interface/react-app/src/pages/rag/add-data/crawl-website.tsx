@@ -70,8 +70,8 @@ export default function CrawlWebsite(props: CrawlWebsiteProps) {
         }
       }
 
-      if (form.limit < 1 || form.limit > 1000) {
-        errors.limit = "Page limit should be between 1 and 1000";
+      if (form.limit < 1 || form.limit > 10000) {
+        errors.limit = "Page limit should be between 1 and 10000";
       }
 
       return errors;

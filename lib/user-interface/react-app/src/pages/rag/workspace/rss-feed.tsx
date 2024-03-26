@@ -614,8 +614,8 @@ export function RssFeedCrawlerForm(props: RssFeedEditorProps) {
     },
     validate: (form) => {
       const errors: Record<string, string | string[]> = {};
-      if (form.limit < 1 || form.limit > 1000) {
-        errors.limit = "Page limit should be between 1 and 1000";
+      if (form.limit < 1 || form.limit > 10000) {
+        errors.limit = "Page limit should be between 1 and 10000";
       }
       return errors;
     },

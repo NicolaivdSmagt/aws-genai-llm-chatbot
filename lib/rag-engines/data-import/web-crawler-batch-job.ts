@@ -38,7 +38,7 @@ export class WebCrawlerBatchJob extends Construct {
       {
         vpc: props.shared.vpc,
         instanceTypes: [
-          ec2.InstanceType.of(ec2.InstanceClass.M6A, ec2.InstanceSize.LARGE),
+          ec2.InstanceType.of(ec2.InstanceClass.M5, ec2.InstanceSize.LARGE),
         ],
         maxvCpus: 4,
         minvCpus: 0,
